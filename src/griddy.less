@@ -1,0 +1,155 @@
+@container_edge: 32px;
+@small_width: 768px;
+@medium_width: 950px;
+@large_width: 1200px;
+
+@columns: 12;
+
+/* Functions */
+.clearfix() {
+    &:before, &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.container_width(@container_width: 768px)
+{
+    width: @container_width - @container_edge;
+}
+
+.column_width(@container_number)
+{
+    width: unit((100 / @columns) * @container_number, %);
+}
+
+/* Layout */
+
+body, html
+{
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix{
+    .clearfix;
+}
+
+.container
+{
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    * {
+        webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+
+    @media screen and (min-width: @small_width)
+    {
+        .container_width(@small_width);
+    }
+
+    @media screen and (min-width: @medium_width)
+    {
+        .container_width(@medium_width);
+    }
+
+    @media screen and (min-width: @large_width)
+    {
+        .container_width(@large_width)
+    }
+
+    .clearfix();
+}
+
+.row
+{
+    display: block;
+    float: left;
+    width: 100%;
+
+    .clearfix
+}
+
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12
+{
+    display: relative;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .clearfix;
+}
+
+@media screen and (min-width: @medium_width)
+{
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12
+    {
+        float: left;
+    }
+
+    .c1
+    {
+        .column_width(1);
+    }
+
+    .c2
+    {
+        .column_width(2);
+    }
+
+    .c3
+    {
+        .column_width(3)
+    }
+
+    .c4
+    {
+        .column_width(4);
+    }
+
+    .c5
+    {
+        .column_width(5);
+    }
+
+    .c6
+    {
+        .column_width(6);
+    }
+
+    .c7
+    {
+        .column_width(7);
+    }
+
+    .c8{
+        .column_width(8);
+    }
+
+    .c9{
+        .column_width(9);
+    }
+
+    .c10{
+        .column_width(10);
+    }
+
+    .c11{
+        .column_width(11);
+    }
+
+    .c12{
+        .column_width(12);
+    }
+}
